@@ -1,0 +1,143 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Mega Sena API",
+		"version": "1.0.0",
+		"description": "API for retrieving Mega Sena lottery results",
+		"contact": { "name": "Paulo Robson da Silva", "email": "prsonda@gmail.com" }
+	},
+	"servers": [{ "url": "http://localhost:3000", "description": "Test API" }],
+	"schemes": ["http"],
+	"paths": {
+		"/megasena/resultados": {
+			"get": {
+				"summary": "Returns the last result of the Mega Sena lottery and the number of the previous contest.",
+				"produces": ["application/json"],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"bolasSorteadas": {
+											"type": "array",
+											"items": {
+												"type": "number"
+											},
+											"description": "The numbers drawn from the last contest."
+										},
+										"premio": {
+											"type": "number",
+											"format": "float",
+											"description": "The prize amount for 6 correct numbers."
+										},
+										"acumulou": {
+											"type": "boolean",
+											"description": "Indicates whether the prize rolled over to the next draw."
+										},
+										"concursoAnterior": {
+											"type": "integer",
+											"description": "The number of the previous draw."
+										},
+										"concurso": {
+											"type": "integer",
+											"description": "The number of the latest draw."
+										},
+										"dataConcurso": {
+											"type": "string",
+											"format": "date",
+											"description": "Last draw date."
+										}
+									}
+								},
+								"example": {
+									"bolasSorteadas": [1, 5, 18, 49, 55, 56],
+									"premio": 86434034.75,
+									"acumulou": true,
+									"concursoAnterior": 2530,
+									"concurso": 2531,
+									"dataConcurso": "20/10/2022"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server error, please search again"
+					}
+				}
+			}
+		},
+		"/megasena/resultados/{id}": {
+			"get": {
+				"summary": "Returns the result of the Mega Sena lottery for a specific draw.",
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"schema": { "type": "integer" },
+						"required": true,
+						"description": "The number of the draw to retrieve."
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"bolasSorteadas": {
+											"type": "array",
+											"items": { "type": "integer" },
+											"description": "The numbers drawn from the last contest."
+										},
+										"premio": {
+											"type": "number",
+											"format": "float",
+											"description": "The prize amount for 6 correct numbers."
+										},
+										"acumulou": {
+											"type": "boolean",
+											"description": "Indicates whether the prize rolled over to the next draw."
+										},
+										"concursoAnterior": {
+											"type": "integer",
+											"description": "The number of the previous draw."
+										},
+										"concurso": {
+											"type": "integer",
+											"description": "The number of the latest draw."
+										},
+										"dataConcurso": {
+											"type": "string",
+											"format": "date",
+											"description": "Last draw date."
+										}
+									}
+								},
+								"example": {
+									"bolasSorteadas": [1, 5, 18, 49, 55, 56],
+									"premio": 86434034.75,
+									"acumulou": true,
+									"concursoAnterior": 2530,
+									"concurso": 2531,
+									"dataConcurso": "20/10/2022"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Contest not found "
+					},
+					"500": {
+						"description": "Server error, please search again"
+					}
+				}
+			}
+		}
+	}
+}
