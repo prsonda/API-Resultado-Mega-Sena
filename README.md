@@ -4,7 +4,7 @@ Rodar o comando '**npm install**' para instalar as dependências
 
 Rodar o comando '**npm rum dev**' para rodar a aplicação em modo de desenvolvimento.
 
-#### Rotas configuradas na API todas com método **GET**
+### Rotas configuradas na API todas com método **GET**
 
 - Rota onde é possível ver a Documentação da API e testar suas funcionalidades
 
@@ -18,7 +18,7 @@ Rodar o comando '**npm rum dev**' para rodar a aplicação em modo de desenvolvi
 
 **_ http://localhost:3000/megasena/resultados/2555 _**[](http://localhost:3000/megasena/resultados/2555) esse número pode ser trocado de acordo com o sorteio que quer visualizar
 
-#### Técnologias utilizadas
+### Técnologias utilizadas
 
 - Nodejs
 - Typescript
