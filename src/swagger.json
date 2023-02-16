@@ -133,6 +133,9 @@
 					"404": {
 						"description": "Contest not found "
 					},
+					"422": {
+						"description": "Request not processed in time, search again"
+					},
 					"500": {
 						"description": "Server error, please search again"
 					}
