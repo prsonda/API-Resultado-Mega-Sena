@@ -16,7 +16,7 @@ Rodar o comando '**npm rum dev**' para rodar a aplicação em modo de desenvolvi
 
 - Rota que retorna um sorteio específico através do número do concurso
 
-**_ http://localhost:3000/megasena/resultados/2555 _**[](http://localhost:3000/megasena/resultados/2555) esse número pode ser trocado de acordo com o sorteio que quer visualizar
+**_ http://localhost:3000/megasena/resultados/2555 _**[](http://localhost:3000/megasena/resultados/2555) esse número pode ser trocado de acordo com o sorteio que quer visualizar. Caso não seja informado um número de concurso, será retornado o último concurso realizado.
 
 ### Técnologias utilizadas
 
