@@ -35,37 +35,27 @@ export const fetchResultById = async (req: Request, res: Response) => {
 
 		const searchEnter = await Promise.all([page.keyboard.press("Enter")]);
 
-		const contestNumber = await Promise.all([
+		let waitingForAnswer = await Promise.all([
 			page.$$eval(".ng-binding", (el) => el.map((tex) => tex.innerHTML)),
 		]);
 
-		const numberOfWinners = await Promise.all([
-			page.$$eval(".ng-binding", (el) => el.map((tex) => tex.innerHTML)),
-		]);
-
-		const waitingForAnswer = await Promise.all([
-			page.$$eval(".ng-binding", (el) => el.map((tex) => tex.innerHTML)),
-		]);
-
-		if (
-			contestNumber === undefined ||
-			numberOfWinners === undefined ||
-			waitingForAnswer === undefined
-		) {
+		if (waitingForAnswer === undefined) {
 			return res
 				.status(500)
 				.json({ message: "Erro de servidor, faça a busca novamente" });
 		}
 
-		const contestPrevious = Number(waitingForAnswer[0][18].split(" ")[1]) - 1;
+		let contest: number = Number(waitingForAnswer[0][18].split(" ")[1]);
 
-		const contest: number = Number(waitingForAnswer[0][18].split(" ")[1]);
+		while (contest !== Number(id)) {
+			waitingForAnswer = await Promise.all([
+				page.$$eval(".ng-binding", (el) => el.map((tex) => tex.innerHTML)),
+			]);
 
-		if (contest !== Number(id)) {
-			return res.status(422).json({
-				message: "Solicitação não processada a tempo, faça a busca novamente",
-			});
+			contest = Number(waitingForAnswer[0][18].split(" ")[1]);
 		}
+
+		const contestPrevious = Number(waitingForAnswer[0][18].split(" ")[1]) - 1;
 
 		const winners = Number(waitingForAnswer[0][35].split(" ")[0]);
 
@@ -91,13 +81,17 @@ export const fetchResultById = async (req: Request, res: Response) => {
 
 		const dateContest = waitingForAnswer[0][18].split(" ")[2].slice(1, 11);
 
+		const drawn = await Promise.all([
+			page.$$eval(".ng-binding", (el) => el.map((tex) => tex.innerHTML)),
+		]);
+
 		const drawnNumbers = [
-			Number(waitingForAnswer[0][20]),
-			Number(waitingForAnswer[0][21]),
-			Number(waitingForAnswer[0][22]),
-			Number(waitingForAnswer[0][23]),
-			Number(waitingForAnswer[0][24]),
-			Number(waitingForAnswer[0][25]),
+			Number(drawn[0][20]),
+			Number(drawn[0][21]),
+			Number(drawn[0][22]),
+			Number(drawn[0][23]),
+			Number(drawn[0][24]),
+			Number(drawn[0][25]),
 		];
 
 		const resultPresentation = {
