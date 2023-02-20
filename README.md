@@ -10,6 +10,9 @@ Rodar o comando '**npm rum dev**' para rodar a aplicação em modo de desenvolvi
 
 **_ http://localhost:3000/api-docs _**[](http://localhost:3000/api-docs)
 
+![Tela Principal](https://github.com/prsonda/API-Resultado-Mega-Sena/blob/master/tela%20principal.PNG)
+![Último Resultado](https://raw.githubusercontent.com/prsonda/API-Resultado-Mega-Sena/master/consulta.PNG)
+
 - Rota que retorna o último sorteio realizado
 
 **_ http://localhost:3000/megasena/resultados _**[](http://localhost:3000/megasena/resultados)
