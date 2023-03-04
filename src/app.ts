@@ -1,6 +1,6 @@
 import express from "express";
+import { serve, setup } from "swagger-ui-express";
 import { routes } from "./routes";
-import swaggerUi from "swagger-ui-express";
 import swaggerDoc from "./swagger.json";
 var cors = require("cors");
 
@@ -12,4 +12,4 @@ app.use(cors());
 
 app.use(routes);
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+app.use("/api-docs", serve, setup(swaggerDoc));
