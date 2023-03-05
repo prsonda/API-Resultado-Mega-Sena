@@ -2,7 +2,7 @@
   "name": "resultado-mega-sena",
   "version": "1.0.0",
   "description": "Retorna ro resultado da mega sena",
-  "main": "server.ts",
+  "main": "src/server.ts",
   "scripts": {
     "start": "node .",
     "dev": "nodemon --exec ts-node ./src/server.ts"
