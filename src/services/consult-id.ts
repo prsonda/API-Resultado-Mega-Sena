@@ -17,7 +17,7 @@ export const fetchResultById = async (req: Request, res: Response) => {
 
     if (searchCurrentContest === undefined) {
       return res
-        .status(500)
+        .status(400)
         .json({ message: "Erro de servidor, faça a busca novamente" });
     }
 
@@ -41,7 +41,7 @@ export const fetchResultById = async (req: Request, res: Response) => {
 
     if (waitingForAnswer === undefined) {
       return res
-        .status(500)
+        .status(400)
         .json({ message: "Erro de servidor, faça a busca novamente" });
     }
 
