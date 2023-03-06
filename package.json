@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Retorna ro resultado da mega sena",
   "main": "src/server.ts",
+  "private": true,
   "scripts": {
-    "start": "node .",
     "dev": "nodemon --exec ts-node ./src/server.ts"
   },
   "keywords": [],
