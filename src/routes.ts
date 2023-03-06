@@ -4,5 +4,5 @@ import { megasenaResults } from "./controllers/megasena-results";
 
 export const routes = Router();
 
-routes.get("/megasena/resultados", megasenaResults);
-routes.get("/megasena/resultados/:id", megasenaResultsId);
+routes.get("/", megasenaResults);
+routes.get("/:id", megasenaResultsId);
