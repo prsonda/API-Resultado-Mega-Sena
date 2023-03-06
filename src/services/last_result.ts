@@ -1,10 +1,10 @@
 import { Response } from "express";
-import { launch } from "puppeteer";
+import puppeteer from "puppeteer";
 import { urlSite } from "./url-site";
 
 export const lastResult = async (res: Response) => {
   try {
-    const browser = await launch();
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
     await page.goto(urlSite);

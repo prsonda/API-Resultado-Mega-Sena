@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { launch } from "puppeteer";
+import puppeteer from "puppeteer";
 import { urlSite } from "./url-site";
 
 export const fetchResultById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const browser = await launch();
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
     await page.goto(urlSite);
