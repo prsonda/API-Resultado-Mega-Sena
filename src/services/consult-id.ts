@@ -24,7 +24,7 @@ export const fetchResultById = async (req: Request, res: Response) => {
     const currentContest = Number(searchCurrentContest[0][18].split(" ")[1]);
 
     if (Number(id) > currentContest || Number(id) <= 0 || !Number(id)) {
-      return res.status(404).json({
+      return res.status(400).json({
         message: "Concurso não encontrado, digite um concurso válido!",
       });
     }
