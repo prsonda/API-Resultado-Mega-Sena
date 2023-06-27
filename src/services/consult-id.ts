@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import { urlSite } from "./url-site";
 
 export const fetchResultById = async (req: Request, res: Response) => {
